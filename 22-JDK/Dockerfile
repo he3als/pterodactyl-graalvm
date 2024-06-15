@@ -6,6 +6,7 @@
 FROM ubuntu:22.04
 
 ARG TARGETPLATFORM
+ARG JAVA_VERSION=22
 
 MAINTAINER RikoDEV, <kontakt@riko.dev>
 
@@ -22,7 +23,7 @@ RUN apt-get update -y \
          "linux/amd64")  ARCH=x64  ;; \
          "linux/arm64")  ARCH=aarch64  ;; \
     esac \
-  && curl --retry 3 -Lfso /tmp/graalvm.tar.gz "https://download.oracle.com/graalvm/22/latest/graalvm-jdk-22_linux-${ARCH}_bin.tar.gz" \
+  && curl --retry 3 -Lfso /tmp/graalvm.tar.gz https://download.oracle.com/graalvm/${JAVA_VERSION}/latest/graalvm-jdk-${JAVA_VERSION}_linux-${ARCH}_bin.tar.gz \
   && mkdir -p /opt/java/graalvm \
   && cd /opt/java/graalvm \
   && tar -xf /tmp/graalvm.tar.gz --strip-components=1 \
