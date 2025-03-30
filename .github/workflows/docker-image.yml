@@ -17,6 +17,7 @@ jobs:
       fail-fast: false
       matrix:
         tag:
+          - 24-JDK
           - 22-JDK
           - 21-JDK
     steps:
